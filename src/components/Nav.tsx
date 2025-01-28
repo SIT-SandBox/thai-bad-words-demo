@@ -1,3 +1,4 @@
+import './Nav.css';
 export function Nav() {
     return (
         <nav className="border-b border-white/10 bg-black/50 backdrop-blur-sm fixed w-full flex justify-between z-10">

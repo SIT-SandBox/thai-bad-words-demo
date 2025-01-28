@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 265 89% 78%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 210 40% 98%;
+    --accent: 265 89% 78%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 9%;
+    --input: 0 0% 9%;
+    --ring: 265 89% 78%;
+    --radius: 0.5rem;
+  }
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+
+.prose {
+  --tw-prose-body: hsl(210 40% 98%);
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-links: hsl(var(--primary));
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(210 40% 98%);
+  --tw-prose-bullets: hsl(210 40% 98%);
+  --tw-prose-quotes: hsl(var(--foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-pre-code: hsl(var(--foreground));
+  --tw-prose-pre-bg: hsl(var(--secondary));
+}
+
+

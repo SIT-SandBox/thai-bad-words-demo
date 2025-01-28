@@ -4,10 +4,13 @@ import './Home.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThaiAlphabetBackground } from "../components/thai-alphabet-background";
+import { scanBadWords } from "thai-bad-words";
 
 export default function Home() {
   const [download, SetDownload] = useState(0);
   const [copied, setCopied] = useState(false);
+  const [inputValue, setInputValue] = useState<string>('');
+  const [scanResult, setScanResult] = useState<string | null>(null);
 
   const handleCopyClick = () => {
     const codeText = "npm i @sit-sandbox/thai-bad-words";
@@ -19,7 +22,19 @@ export default function Home() {
       toast.error("Failed to copy!",err); 
     });
   };
-
+  const scan = (input:string) => {
+    scanBadWords(input).then(()=>{
+      setScanResult('');
+    }).catch(err=>{
+      setScanResult(String(err));
+    })
+  }
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  };
+  useEffect(()=>{
+    scan(inputValue);
+  },[inputValue])
   useEffect(() => {
     const url = `https://api.npmjs.org/downloads/point/last-month/@sit-sandbox/thai-bad-words`;
 
@@ -52,9 +67,12 @@ export default function Home() {
             {copied && <span className="text-green-500 ml-2">Copied!</span>}
           </p>
           <input
+            value={inputValue}
+            onChange={handleInputChange}
             placeholder="Enter your bad word!"
             className="bg-white/10 text-white placeholder-gray-400 border-none outline-0 text-4xl p-4 w-[80%]"
           />
+          <p className="text-red-500">{scanResult}</p>
           <div className="mt-6 flex items-center justify-center gap-2">
             <div className="flex gap-1">
               {['https://avatars.githubusercontent.com/u/195660158?s=400&u=aea6719c50a0924cddaa4ccc61c5293e49572ef9&v=4',

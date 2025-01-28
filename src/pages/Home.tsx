@@ -4,7 +4,7 @@ import './Home.css';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThaiAlphabetBackground } from "../components/thai-alphabet-background";
-import { scanBadWords } from "thai-bad-words";
+import { scanBadWords } from "@sit-sandbox/thai-bad-words";
 
 export default function Home() {
   const [download, SetDownload] = useState(0);
